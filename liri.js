@@ -109,7 +109,7 @@ function randomThis() {
     fs.readFile("random.txt", "utf8", function (error, data) {
         if (error) return console.log(error);
 
-        let dataArray = data.split('\r\n');
+        let dataArray = data.split('\n');
         let randomInput = dataArray[Math.floor(Math.random() * dataArray.length)];
 
         randomInput = randomInput.split(' ');

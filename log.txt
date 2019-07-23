@@ -241,3 +241,13 @@ movie-this batman
 s signilsrg
 c silrgisrgiangnd
 m slrgnskrhg
+s howlin' for you
+c black keys
+m avengers
+c incubus
+c black keys
+m batman
+s howlin' for you
+c red hot chili peppers
+m red
+m batman
