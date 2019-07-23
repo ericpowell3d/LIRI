@@ -15,7 +15,7 @@ function spotifyThis(terms) {
         query: terms
     }).then(function (response) {
         if (response.tracks.items[0] === undefined) {
-            console.log(chalk.hex('#ff0000')("\nNo tracks found!"));
+            console.log(chalk.hex('#ff0000')("\nTrack info not found!"));
             run();
         }
         else {
@@ -45,36 +45,21 @@ function spotifyThis(terms) {
                 console.log(`\nSELECTED -- ${result.choice} --`);
                 run();
             }).catch(function (error) {
-                if (error.response) {
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
-                } else if (error.request) {
-                    console.log(error.request);
-                } else {
-                    console.log("Error", error.message);
-                }
-                console.log(error.config);
+                console.log(error);
+                run();
             });
         }
     }).catch(function (error) {
-        if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-        } else if (error.request) {
-            console.log(error.request);
-        } else {
-            console.log("Error", error.message);
-        }
-        console.log(error.config);
+        console.log(error);
+        console.log(chalk.hex('#ff0000')("\nTrack info not found!"));
+        run();
     });
 }
 function concertThis(terms) {
     axios.get(`https://rest.bandsintown.com/artists/${terms}/events?app_id=codingbootcamp`)
         .then(function (response) {
-            if (!response) {
-                console.log(chalk.hex('#ff0000')("\nNo concerts found!"));
+            if (!response.data[0]) {
+                console.log(chalk.hex('#ff0000')("\nConcert info not found!"));
             }
             else {
                 for (let i = 0; i < 20; i++) {
@@ -92,24 +77,15 @@ function concertThis(terms) {
             run();
         })
         .catch(function (error) {
-            if (error.response) {
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                console.log(error.request);
-            } else {
-                console.log(chalk.hex('#ff0000')("\nNo concerts found!"));
-            }
-            // console.log(error.config);
+            console.log(chalk.hex('#ff0000')("\nConcert info not found!"));
             run();
         });
 }
 function movieThis(terms) {
     axios.get(`http://www.omdbapi.com/?t=${terms}&y=&plot=short&apikey=trilogy`)
         .then(function (response) {
-            if (response.data.Title === undefined) {
-                console.log(chalk.hex('#ff0000')("\nMovie not found!"));
+            if (response.data.Response === "False") {
+                console.log(chalk.hex('#ff0000')("\nMovie info not found!"));
             }
             else {
                 console.log("\nTITLE: " + chalk.hex('#00ff80')(response.data.Title));
@@ -124,16 +100,8 @@ function movieThis(terms) {
             run();
         })
         .catch(function (error) {
-            if (error.response) {
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                console.log(error.request);
-            } else {
-                console.log("Error", error.message);
-            }
-            console.log(error.config);
+            console.log(error);
+            console.log(chalk.hex('#ff0000')("\nMovie info not found!"));
             run();
         });
 }
@@ -161,7 +129,7 @@ function randomThis() {
             movieThis(randomTerms);
         }
         else {
-            console.log("Command not recognized!");
+            console.log(chalk.hex('#ff0000')("Command not recognized!"));
         }
     });
 }
@@ -172,19 +140,18 @@ function log(command, terms) {
     });
 }
 
-const readline = require('readline');
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 function run() {
     console.log('\r');
-    rl.resume();
-    rl.question(chalk.hex('#ffffff').bgHex('#404040')('Input a command:') + ' ', (input) => {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "input",
+            message: chalk.hex('#ffffff').bgHex('#404040')('Input a command:')
+        }
+    ]).then(function (result) {
         console.log('\r');
-        rl.pause();
 
-        input = input.split(" ");
+        let input = result.input.split(" ");
         let command = input[0].toLowerCase();
         let terms = input.slice(1).join(" ").toLowerCase();
 
@@ -206,8 +173,13 @@ function run() {
         else if (command === "do-what-it-says" || command === "random" || command === "dwis" || command === "r") {
             randomThis();
         }
+        else if (command === "close" || command === "exit" || command === "end") {
+            console.log(chalk.hex('#ff8000').bgHex('#402000')("Exiting program..."));
+            process.exit();
+        }
         else {
-            console.log("Command not recognized!");
+            console.log(chalk.hex('#ff0000')("Command not recognized!"));
+            run();
         }
     });
 }
