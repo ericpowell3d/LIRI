@@ -1,0 +1,33 @@
+c black keys
+c black sabbath
+c dan auerbach
+c foo fighters
+c hans zimmer
+c incubus
+c muse
+c noel gallagher's high flying birds
+c the raconteurs
+c red hot chili peppers
+c shinedown
+m batman
+m batman begins
+m the dark knight
+m the dark knight rises
+m dunkirk
+m following
+m inception
+m insomnia
+m interstellar
+m momento
+m the prestige
+s all along the watchtower
+s don't bring me down
+s hey jude
+s hurricane
+s in the end
+s intergalactic
+s kashmir
+s roundabout
+s run through the jungle
+s saturday night's alright
+s space oddity
