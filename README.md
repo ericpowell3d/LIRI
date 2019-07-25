@@ -62,11 +62,11 @@ The list of commands are as follows...
 
 ### APIs Used
 
-* Spotify
+* Spotify - Fetches music metadata and urls for Spotify to play a track
 
-* Bands In Town
+* Bands In Town - Finds concerts and venues related to an artist
 
-* OMDB
+* OMDB - Gets movie data based on the search
 
 ### NPM Packages Used
 
@@ -98,12 +98,18 @@ The list of commands are as follows...
 
 ### Usage
 
-In order to clone and use the app, you need to install the included node_modules in the package.json file. You will also need to create your own spotify developer credentials and generate your client_id and client_secret. Once generated, create a .env file in the main directory and place the following code, replacing the client_id and client_secret with your generated values...
+In order to clone and use the app, you need to install the included node_modules in the package.json file. You will also need to create your own Spotify developer credentials and generate your client_id and client_secret. In addition, you'll need a Bands In Town app ID & OMDb API key. Once all of your keys are generated, create a .env file in the main directory and place the following code, filling the assignments with your generated values...
 
 ```js
-# Spotify API keys
-SPOTIFY_ID=your-spotify-id
-SPOTIFY_SECRET=your-spotify-secret
+# Spotify Keys
+SPOTIFY_ID = // Your Spotify ID goes here
+SPOTIFY_SECRET = // Your Spotify secret goes here
+
+# Bands In Town Key
+BIT_ID = // Your Bands In Town app ID goes here
+
+# OMDb Key
+OMDB_KEY = // Your OMDb API key goes here
 ```
 
 You should be good to run the program in your preferred command window.

@@ -6,8 +6,11 @@ var inquirer = require("inquirer");
 var keys = require("./keys.js");
 var moment = require('moment');
 var opn = require('opn');
+
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
+var bit = keys.bit.id;
+var omdb = keys.omdb.key;
 
 function spotifyThis(terms) {
     spotify.search({
@@ -50,16 +53,15 @@ function spotifyThis(terms) {
             });
         }
     }).catch(function (error) {
-        console.log(error);
-        console.log(chalk.hex('#ff0000')("\nTrack info not found!"));
+        console.log(chalk.hex('#ff0000')("\nTrack info not completed!"));
         run();
     });
 }
 function concertThis(terms) {
-    axios.get(`https://rest.bandsintown.com/artists/${terms}/events?app_id=codingbootcamp`)
+    axios.get(`https://rest.bandsintown.com/artists/${terms}/events?app_id=${bit}`)
         .then(function (response) {
             if (!response.data[0]) {
-                console.log(chalk.hex('#ff0000')("\nConcert info not found!"));
+                console.log(chalk.hex('#ff0000')("\nThis band has no upcoming shows!"));
             }
             else {
                 for (let i = 0; i < 20; i++) {
@@ -82,7 +84,7 @@ function concertThis(terms) {
         });
 }
 function movieThis(terms) {
-    axios.get(`http://www.omdbapi.com/?t=${terms}&y=&plot=short&apikey=trilogy`)
+    axios.get(`http://www.omdbapi.com/?t=${terms}&y=&plot=short&apikey=${omdb}`)
         .then(function (response) {
             if (response.data.Response === "False") {
                 console.log(chalk.hex('#ff0000')("\nMovie info not found!"));
@@ -100,8 +102,7 @@ function movieThis(terms) {
             run();
         })
         .catch(function (error) {
-            console.log(error);
-            console.log(chalk.hex('#ff0000')("\nMovie info not found!"));
+            console.log(chalk.hex('#ff0000')("\nMovie info not completed!"));
             run();
         });
 }
@@ -109,7 +110,7 @@ function randomThis() {
     fs.readFile("random.txt", "utf8", function (error, data) {
         if (error) return console.log(error);
 
-        let dataArray = data.split('\n');
+        let dataArray = data.replace('\r', '').split('\n');
         let randomInput = dataArray[Math.floor(Math.random() * dataArray.length)];
 
         randomInput = randomInput.split(' ');
