@@ -2,15 +2,15 @@
 
 ### Overview
 
-LIRI (Language Interpretation and Recognition Interface) is a command node app similar to SIRI, who is based on speech instead. LIRI takes in a command, followed by a parameter. [Here's an example of how it looks in action](screenshots/main.png)
+LIRI (Language Interpretation and Recognition Interface) is a command node app similar to SIRI, who is based on speech instead. LIRI takes in a command, followed by a parameter. Here's an example of how it looks in action:![](screenshots/main.png)
 
 - - -
 
 ### How It Works
 
-* Inquirer will prompt the user for a command followed by a parameter. [Here's what it looks like when first started.](screenshots/start.png)
+* Inquirer will prompt the user for a command followed by a parameter. Here's what it looks like when first started:![](screenshots/start.png)
 
-* Simply enter a command and watch the magic happen. [Here's one example of a command used by LIRI.](screenshots/command.png)
+* Simply enter a command and watch the magic happen. Here's one example of a command used by LIRI:![](screenshots/command.png)
 
 * After the command has been executed, the application will automatically return to the starting point (the input line).
 
@@ -26,7 +26,7 @@ The list of commands are as follows...
 
     * You can scroll through the list and press enter/return to play the song in your browser, or you may exit and return to the input line.
 
-    * [Here's an example screenshot of the spotify command.](screenshots/spotify.png)
+    * Here's an example screenshot of the spotify command:![](screenshots/spotify.png)
 
 2. `concert-this`, `concert`, `c`
 
@@ -36,7 +36,7 @@ The list of commands are as follows...
 
     * No action is required to return to the input line.
 
-    * [Here's an example screenshot of the concert command.](screenshots/concert.png)
+    * Here's an example screenshot of the concert command:![](screenshots/concert.png)
 
 3. `movie-this`, `movie`, `m`
 
@@ -46,7 +46,7 @@ The list of commands are as follows...
 
     * No action is required to return to the input line.
 
-    * [Here's an example screenshot of the movie command.](screenshots/movie.png)
+    * Here's an example screenshot of the movie command:![](screenshots/movie.png)
 
 4. `do-what-it-says`, `random`, `dwis`, `r`
 
@@ -56,7 +56,7 @@ The list of commands are as follows...
 
     * Depending on the executed command, you may need to perform another action to return to the input line.
 
-    * [Here's an example screenshot of the random command.](screenshots/random.png)
+    * Here's an example screenshot of the random command:![](screenshots/random.png)
 
 - - -
 
@@ -86,13 +86,13 @@ The list of commands are as follows...
 
 ### Extra Features
 
-* If no parameters are entered after a command, a default value will be chosen and executed. [Here's an example screenshot of the default parameters for all commands.](screenshots/default.png)
+* If no parameters are entered after a command, a default value will be chosen and executed. Here's an example screenshot of the default parameters for all commands:![](screenshots/default.png)
 
 * A log.txt file is stored that keeps track of every command you input. This file is included in the directory.
 
-* If a parameter is not recognized, it will return with an error like you can see [Here.](screenshots/error.png)
+* If a parameter is not recognized, it will return with an error like you can see Here:![](screenshots/error.png)
 
-* [An exit command was also added.](screenshots/exit.png)
+* An exit command was also added:![](screenshots/exit.png)
 
 - - -
 
