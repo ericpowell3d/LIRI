@@ -36,7 +36,9 @@ The list of commands are as follows...
 
     * No action is required to return to the input line.
 
-    * Here's an example screenshot of the concert command:![](screenshots/concert.png)
+    * Here's an example screenshot of the concert command:
+    
+    ![](screenshots/concert.png)
 
 3. `movie-this`, `movie`, `m`
 
